@@ -1,20 +1,24 @@
 import { DollarOutlined, AlertOutlined } from "@ant-design/icons";
 import { Layout, Menu, Button } from "antd";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
-import { UserContext } from "../context/userContext";
+
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { useSelector, useDispatch } from "react-redux";
+import { userSelector, logout, signin } from "../store/user";
 const { Header, Content, Footer, Sider } = Layout;
 
 const Layouts = (props) => {
-  let { loginStatus, setLoginStatus } = useContext(UserContext);
+  let sections;
+  let dispatch = useDispatch();
+  let { loginStatus } = useSelector(userSelector);
   const navigate = useNavigate();
   const handleLogout = () => {
     Cookies.remove("id");
     Cookies.remove("token");
-    setLoginStatus(false);
-    window.location.reload();
+    dispatch(logout());
+    navigate("/");
   };
   const handleSignin = () => {
     navigate("/signin");
@@ -22,17 +26,21 @@ const Layouts = (props) => {
   const handleSignup = () => {
     navigate("/signup");
   };
-  let sections = [
-    { icon: AlertOutlined, label: "list food", link: "/" },
-    { icon: AlertOutlined, label: "add food", link: "/addfood" },
-    { icon: DollarOutlined, label: "balance", link: "/balance" },
-  ];
+  if (loginStatus) {
+    sections = [
+      { icon: AlertOutlined, label: "list food", link: "/" },
+      { icon: AlertOutlined, label: "add food", link: "/addfood" },
+      { icon: DollarOutlined, label: "balance", link: "/balance" },
+    ];
+  } else {
+    sections = [{ icon: AlertOutlined, label: "list food", link: "/" }];
+  }
   //responsive sidebar
   let [position1, setPosition1] = useState("");
   let [broken, setBroken] = useState("");
   useEffect(() => {
-    Cookies.get("token") ? setLoginStatus(true) : setLoginStatus(false);
-  }, []);
+    Cookies.get("token") ? dispatch(signin()) : dispatch(logout());
+  }, [dispatch]);
   useEffect(() => {
     setPosition1(broken ? { position: "absolute", height: "100vh", zIndex: "10" } : null);
   }, [broken]);
@@ -63,23 +71,6 @@ const Layouts = (props) => {
         />
       </Sider>
       <Layout>
-        {/* <Header className="header" theme="light">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <div style={{ width: "400px", fontSize: "1.3rem" }}>COMPFEST CANTEEN</div>
-            {loginStatus ? (
-              <Button onClick={handleLogout} style={{ position: "absolute", right: "10px" }}>
-                Log out
-              </Button>
-            ) : (
-              <div style={{ position: "absolute", right: "10px" }}>
-                <Button onClick={handleSignin}>Signin</Button>
-                <Button onClick={handleSignup} style={{ margin: "0 10px" }}>
-                  Signup
-                </Button>
-              </div>
-            )}
-          </div>
-        </Header> */}
         <Header
           theme="light"
           className="site-layout-sub-header-background"

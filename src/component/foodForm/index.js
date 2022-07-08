@@ -1,27 +1,22 @@
 import { Button, Form, Input } from "antd";
-import Cookies from "js-cookie";
-import React, { useState } from "react";
-import axios from "axios";
 
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
+import { fileSelector, postForm } from "../../store/product";
+import { useDispatch } from "react-redux";
+import { uploadFile } from "../../store/product";
+import { useSelector } from "react-redux/es/exports";
 const FoodForm = () => {
-  let [file, setFile] = useState("");
+  let file = useSelector(fileSelector);
+  let navigate = useNavigate();
+  let dispatch = useDispatch();
   let handleFile = (e) => {
-    let file = e.target.files[0];
-    setFile(file);
+    dispatch(uploadFile(e.target.files[0]));
   };
-  const onFinish = (values) => {
-    let formData = new FormData();
-    formData.append("itemImage", file);
-    formData.append("itemName", values.itemName);
-    formData.append("desc", values.desc);
-    formData.append("price", values.price);
-
-    axios({
-      url: "https://honesty-canteen1.herokuapp.com/item/create",
-      data: formData,
-      method: "POST",
-      headers: { Authorization: "Bearer " + Cookies.get("token") },
-    }).then((res) => {});
+  const onFinish = async (values) => {
+    await postForm(file, values);
+    navigate("/");
   };
 
   return (

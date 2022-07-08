@@ -1,41 +1,29 @@
+/* eslint-disable no-unused-vars */
 import { Table, Tooltip } from "antd";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect } from "react";
+import { getListProductAsync, selectProductMap, selectProductReducer, selectProduct } from "../../store/product";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import Spinner from "../spinner";
 const FoodTable = () => {
-  let [listFood, setListFood] = useState([]);
-  let getItem = () => {
-    axios.get("https://honesty-canteen1.herokuapp.com/item").then(function (response) {
-      let data = response.data.data.item.map((i) => {
-        let indexOfT = i.createdAt.indexOf("T");
-        let date = i.createdAt.slice(0, indexOfT);
-        let imageURL = "https://honesty-canteen1.herokuapp.com/uploads/";
-        return {
-          ...i,
-          key: i._id,
-          createdAt: date,
-          itemImage: React.createElement("img", { src: imageURL + i.itemImage, style: { height: "60px", width: "60px" }, alt: "image already deleted at heroku" }, null),
-        };
-      });
-      setListFood(data);
-    });
-  };
+  let listProduct = useSelector(selectProductMap);
+  let isLoading = useSelector(selectProduct).isLoading;
+  let dispatch = useDispatch();
+
   let actionBuy = async (e) => {
     let id = e.target.id;
-
     await axios.delete(`https://honesty-canteen1.herokuapp.com/item/delete/${id}`, { headers: { Authorization: "Bearer " + Cookies.get("token") } });
-    getItem();
+    dispatch(getListProductAsync());
   };
   useEffect(() => {
-    getItem();
-  }, []);
+    dispatch(getListProductAsync());
+  }, [dispatch]);
   const columns = [
     {
       title: "Name",
       dataIndex: "itemName",
-      // defaultSortOrder: "descend",
       sorter: (a, b) => (a.name === b.name ? 1 : a.name.localeCompare(b.name)),
 
       // sortOrder: sortedInfo.columnKey === "name" ? sortedInfo.order : null,
@@ -44,14 +32,12 @@ const FoodTable = () => {
     {
       title: "Image",
       dataIndex: "itemImage",
-      defaultSortOrder: "descend",
       align: "center",
       responsive: ["lg"],
     },
     {
       title: "Description",
       dataIndex: "desc",
-      defaultSortOrder: "descend",
       responsive: ["lg"],
       ellipsis: {
         showTitle: false,
@@ -65,12 +51,11 @@ const FoodTable = () => {
     {
       title: "Price",
       dataIndex: "price",
-      defaultSortOrder: "descend",
     },
     {
       title: "Date",
       dataIndex: "createdAt",
-      defaultSortOrder: "descend",
+      defaultSortOrder: "ascend",
       responsive: ["lg"],
       sorter: (a, b) => (a.date === b.date ? 1 : a.date.localeCompare(b.date)),
     },
@@ -87,7 +72,7 @@ const FoodTable = () => {
       ),
     },
   ];
-  return <Table columns={columns} dataSource={listFood} />;
+  return <>{!isLoading && listProduct.length !== 0 ? <Table columns={columns} dataSource={listProduct} /> : <Spinner />}</>;
 };
 
 export default FoodTable;

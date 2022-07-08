@@ -13,7 +13,7 @@ const composeEnhancer = (process.env.NODE_ENV !== "production" && window && wind
 const persistConfig = {
   key: "root",
   storage,
-  //   blacklist: ["user"],
+  blacklist: [],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

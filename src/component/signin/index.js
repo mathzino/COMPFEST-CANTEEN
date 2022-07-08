@@ -2,11 +2,12 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Button, Form, Input } from "antd";
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../context/userContext";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { signin } from "../../store/user";
 const SigninForm = () => {
-  let { setLoginStatus } = useContext(UserContext);
+  let dispatch = useDispatch();
   let navigate = useNavigate();
   const onFinish = (values) => {
     axios
@@ -18,7 +19,7 @@ const SigninForm = () => {
         var token = res.data.data.token;
         Cookies.set("id", values.id, { expires: 1 });
         Cookies.set("token", token, { expires: 1 });
-        setLoginStatus(true);
+        dispatch(signin());
         navigate("/");
       })
       .catch((err) => {
