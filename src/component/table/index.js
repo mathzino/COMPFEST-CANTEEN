@@ -15,8 +15,8 @@ const FoodTable = () => {
   let actionBuy = async (e) => {
     let id = e.target.id;
     await axios.delete(`https://honesty-canteen1.herokuapp.com/item/delete/${id}`, { headers: { Authorization: "Bearer " + Cookies.get("token") } });
-    dispatch(getListProductAsync());
     window.location.reload();
+    dispatch(getListProductAsync());
   };
   useEffect(() => {
     dispatch(getListProductAsync());
