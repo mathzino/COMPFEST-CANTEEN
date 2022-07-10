@@ -4,7 +4,7 @@
 <p align="center"> <a href="https://www.linkedin.com/in/muhammad-fairus-ramadhani-4895481b1/}" target="_blank"><img alt="" src="https://img.shields.io/badge/LinkedIn-0077B5?style=normal&logo=linkedin&logoColor=white" style="vertical-align:center" /></a> </p>
 
 # Description
-COMPFEST CANTEEN is a website to train the honesty of student with honesty canteen 
+Kantin Kejujuran  is a website to train students' honesty with a system where students serve themselves without supervision
 
 # Features
 COMPFEST CANTEEN now have 3 features for registered student 
@@ -13,37 +13,12 @@ COMPFEST CANTEEN now have 3 features for registered student
 3. Balance page, in the balance page student can check, add and withdraw canteen's balance 
 for non registered student can only open the list product page, but can't buy the product 
 
-
-# Screenshots
- <img src="https://drive.google.com/file/d/1aIOebsity86GgOKKP1H5i-UiIDF7Bji-/view?usp=sharing"> <img src="blob:https://web.whatsapp.com/11ab6714-73aa-45f0-8a63-55afad0342b0"> <img src="blob:https://web.whatsapp.com/2b2dac66-2f8b-4a2c-b398-567f87f9babf">
 # Tech Used
  ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
       
-# Add More Details:
-Anything else that you want to add for users? You can write it here in markdown and see preview in real time. You can add anything that you want, for example
-
-### You can add How to Setup:
-- Step 1: this is step 1
-- Step 2: do this, do that
-
-### You can add API references
-| Syntax | Description |
-| ----------- | ----------- |
-| AndroidX | Refactored versions of the Android APIs that are not bundled with the operating system. |
-| AndroidX Test | Includes APIs for testing your Android app, including Espresso, JUnit Runner, JUnit4 rules, and UI Automator. |
-
-### You can add 
-[Links](https://itsvg.in)
- 
-![](https://img.shields.io/badge/IMAGES-4298B8.svg?style=for-the-badge&logoColor=white)
-# If you don't want to add this section, just clear all the text written here.
-
-      
-<!-- </> with 💛 by readMD (https://readmd.itsvg.in) -->
-    
-
-
-
+# More Details:
+for the preview clink link below:
+https://kantin-kejujuran.netlify.app/
 
 
 # Getting Started with Create React App
