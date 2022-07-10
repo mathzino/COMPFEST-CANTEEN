@@ -89,7 +89,7 @@ export const getListProductAsync = () => {
           ...i,
           key: i._id,
           createdAt: date,
-          itemImage: React.createElement("img", { src: imageURL + i.itemImage, style: { height: "60px", width: "60px" }, alt: "image already deleted at heroku" }, null),
+          itemImage: React.createElement("img", { src: imageURL + i.itemImage, style: { height: "60px", width: "60px" }, alt: "image have already deleted at heroku" }, null),
         };
       });
       dispatch(getListProduct(data));
