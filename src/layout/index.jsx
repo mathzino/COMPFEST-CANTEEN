@@ -81,7 +81,7 @@ const Layouts = (props) => {
           }}
         >
           <div style={{ display: "flex", alignItems: "center" }}>
-            <div style={{ width: "400px", fontSize: "0.8em" }}>COMPFEST CANTEEN</div>
+            <div style={{ width: "400px", fontSize: "0.8em" }}>Kantin Kejujuran</div>
             {loginStatus ? (
               <Button onClick={handleLogout} style={{ position: "absolute", right: "20px" }}>
                 Log out
