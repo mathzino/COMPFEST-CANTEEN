@@ -10,13 +10,14 @@ COMPFEST CANTEEN now have 3 features for registered student
 1. List Product Page, in this page student can buy product
 2. Form to add product that student want to sell
 3. Balance page, in the balance page student can check, add and withdraw canteen's balance 
-for non registered student can only open the list product page, but can't buy the product 
+
+ for non registered student can only open the list product page, but can't buy the product 
 
 # Tech Used
  ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
       
 # More Details:
-for the preview clink this link:
+for the preview click this link:
 https://kantin-kejujuran.netlify.app/
 
 
